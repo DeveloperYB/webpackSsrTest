@@ -1,0 +1,9 @@
+{
+  "name": "webpackSSR",
+  "version": "1.0.0",
+  "description": "Build a react SSR structure without CRA",
+  "main": "index.js",
+  "repository": "https://github.com/DeveloperYB/webpackSsrTest.git",
+  "author": "YouBeen Kim <qlqjsk@gmail.com>",
+  "license": "MIT"
+}
