@@ -5,5 +5,15 @@
   "main": "index.js",
   "repository": "https://github.com/DeveloperYB/webpackSsrTest.git",
   "author": "YouBeen Kim <qlqjsk@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "react": "^16.8.4",
+    "react-redux": "^6.0.1",
+    "react-router": "^5.0.0",
+    "react-router-dom": "^5.0.0"
+  },
+  "devDependencies": {
+    "babel-preset-react": "^6.24.1",
+    "webpack": "^4.29.6"
+  }
 }
