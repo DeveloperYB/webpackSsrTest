@@ -23,6 +23,9 @@ module.exports = {
                 }
             }
         ]
+    },
+    performance: {
+        maxAssetSize: 550000
     }
     // optimization: {
     //     splitChunks: {
