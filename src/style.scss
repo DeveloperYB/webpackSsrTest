@@ -1,6 +1,8 @@
 body {
-    background-color: #ccc;
-    .hello {
+    background: url('./images/dobbyisfree.png');
+    background-size: 130px;
+    background-repeat: no-repeat;
+    > div {
         font-size: 20px;
         color: red;
     }
