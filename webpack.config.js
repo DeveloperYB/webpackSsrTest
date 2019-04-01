@@ -12,11 +12,11 @@ module.exports = (env, options) => {
         },
         output: {
             filename: isEnvProduction
-                ? 'static/js/[name].[contenthash:8].js'
+                ? 'static/js/[name].js'
                 : isEnvDevelopment && 'static/js/bundle.js',
             path: isEnvProduction ? path.resolve(__dirname, 'dist') : undefined,
             chunkFilename: isEnvProduction
-                ? 'static/js/[name].[contenthash:8].chunk.js'
+                ? 'static/js/[name].chunk.js'
                 : isEnvDevelopment && 'static/js/[name].chunk.js'
         },
         plugins: [
@@ -25,8 +25,7 @@ module.exports = (env, options) => {
                     {},
                     {
                         template: path.join(__dirname, 'public/index.html'),
-                        showErrors: true, // 에러 발생시 메세지가 브라우저 화면에 노출 된다.
-                        favicon: 'favicon.ico'
+                        showErrors: true // 에러 발생시 메세지가 브라우저 화면에 노출 된다.
                     },
                     isEnvProduction
                         ? {
@@ -49,6 +48,20 @@ module.exports = (env, options) => {
         ],
         module: {
             rules: [
+                {
+                    test: /\.(js|jsx)$/,
+                    exclude: /(node_modules|bower_components)/,
+                    use: {
+                        loader: 'babel-loader',
+                        options: {
+                            presets: ['@babel/preset-env', '@babel/preset-react'],
+                            plugins: [
+                                '@babel/plugin-syntax-dynamic-import',
+                                '@babel/plugin-proposal-class-properties'
+                            ]
+                        }
+                    }
+                },
                 {
                     test: /\.(scss|css)$/,
                     use: ['style-loader', 'css-loader', 'sass-loader']
@@ -81,9 +94,7 @@ module.exports = (env, options) => {
             hot: true, // 서버에서 HMR을 켠다.
             host: '0.0.0.0', // 디폴트로는 "localhost" 로 잡혀있다. 외부에서 개발 서버에 접속해서 테스트하기 위해서는 '0.0.0.0'으로 설정해야 한다.
             contentBase: path.join(__dirname, 'dist'), // 개발서버의 루트 경로
-            stats: {
-                color: true
-            }
+            historyApiFallback: true
         };
     } else {
         // production

@@ -1,17 +1,11 @@
-import _ from 'lodash';
-import './style.scss';
-// import DobbyIsFree from './images/dobbyisfree.png';
-
-function component() {
-    let element = document.createElement('div');
-    element.innerHTML = _.join(['Hello', 'webpack'], ' ');
-    let btn = document.createElement('button');
-
-    btn.innerHTML = 'Click me and then check the console!';
-    btn.onclick = () => {
-        import('./print').then(({ default: printMe }) => printMe());
-    };
-    element.appendChild(btn);
-    return element;
-}
-document.body.appendChild(component());
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { BrowserRouter } from 'react-router-dom';
+import App from './shared/App';
+import './reset.css';
+ReactDOM.hydrate(
+    <BrowserRouter>
+        <App />
+    </BrowserRouter>,
+    document.getElementById('root')
+);
